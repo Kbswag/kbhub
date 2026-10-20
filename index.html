@@ -1,1 +1,86 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BENNY MOVIE'S</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101010;color:white;font-family:Arial,sans-serif}
+header{background:#e50914;padding:24px 10px;text-align:center}
+header h1{margin:0;font-size:30px}
+.search{text-align:center;padding:20px}
+input{width:90%;max-width:450px;padding:13px;border:0;border-radius:7px;font-size:16px}
+.categories{text-align:center;padding:10px}
+.categories button,.movie button{background:#e50914;color:white;border:0;padding:10px;margin:4px;border-radius:5px}
+h2{padding-left:15px}
+.movies{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:15px}
+.movie{background:#202020;border-radius:8px;overflow:hidden;text-align:center;padding-bottom:15px}
+.poster{height:170px;background:linear-gradient(145deg,#450000,#e50914,#111);display:flex;align-items:center;justify-content:center;font-size:45px}
+.movie h3{font-size:16px}
+.movie p{color:#ccc;font-size:13px}
+.price{color:#00e676!important;font-size:18px!important;font-weight:bold}
+footer{text-align:center;padding:25px 10px;background:#222;color:#bbb}
+</style>
+</head>
+<body>
+<header>
+<h1>🎬 BENNY MOVIE'S</h1>
+<p>Your Entertainment Destination</p>
+</header>
+<div class="search">
+<input id="search" placeholder="🔍 Search movies..." oninput="searchMovies()">
+</div>
+<div class="categories">
+<button onclick="filterMovies('All')">All</button>
+<button onclick="filterMovies('Kannada')">Kannada</button>
+<button onclick="filterMovies('Hindi')">Hindi</button>
+<button onclick="filterMovies('Telugu')">Telugu</button>
+<button onclick="filterMovies('Tamil')">Tamil</button>
+</div>
+<h2>🔥 Movie Collection</h2>
+<div class="movies" id="movies">
+<div class="movie" data-language="Kannada">
+<div class="poster">🎬</div><h3>Kannada Movie</h3>
+<p>Language: Kannada</p><p class="price">₹29</p>
+<button onclick="details()">View Details</button>
+</div>
+<div class="movie" data-language="Hindi">
+<div class="poster">🍿</div><h3>Hindi Movie</h3>
+<p>Language: Hindi</p><p class="price">₹29</p>
+<button onclick="details()">View Details</button>
+</div>
+<div class="movie" data-language="Telugu">
+<div class="poster">🎥</div><h3>Telugu Movie</h3>
+<p>Language: Telugu</p><p class="price">₹29</p>
+<button onclick="details()">View Details</button>
+</div>
+<div class="movie" data-language="Tamil">
+<div class="poster">🎞️</div><h3>Tamil Movie</h3>
+<p>Language: Tamil</p><p class="price">₹29</p>
+<button onclick="details()">View Details</button>
+</div>
+</div>
+<footer>
+<p>© 2026 BENNY MOVIE'S</p>
+<p>Downloads only for movies with authorized distribution rights.</p>
+</footer>
+<script>
+function searchMovies(){
+let q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.movie').forEach(m=>{
+m.style.display=m.innerText.toLowerCase().includes(q)?'':'none';
+});
+}
+function filterMovies(lang){
+document.getElementById('search').value='';
+document.querySelectorAll('.movie').forEach(m=>{
+m.style.display=(lang==='All'||m.dataset.language===lang)?'':'none';
+});
+}
+function details(){
+alert('Movie details and authorized download options coming soon!');
+}
+</script>
+</body>
+</html>
